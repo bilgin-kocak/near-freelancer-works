@@ -1,70 +1,72 @@
-import { addMessage, getMessages } from '../main';
-import { PostedMessage, messages } from '../model';
+import { addGig, getGigs, changeValidityGig } from '../main';
+import { PostedGig, gigs } from '../model';
 import { VMContext, Context, u128 } from 'near-sdk-as';
 
-function createMessage(text: string): PostedMessage {
-  return new PostedMessage(text);
+function createGig(text: string, description: string): PostedGig {
+  const newIndex = gigs.length as i32;
+  return new PostedGig(newIndex, text, description);
 }
 
-const message = createMessage('hello world');
+const gig = createGig('NEAR Developer Needed','This is a sample gig');
 
-describe('message tests', () => {
+describe('gig tests', () => {
   afterEach(() => {
-    while(messages.length > 0) {
-      messages.pop();
+    while(gigs.length > 0) {
+      gigs.pop();
     }
   });
 
-  it('adds a message', () => {
-    addMessage('hello world');
-    expect(messages.length).toBe(
+  it('adds a gig', () => {
+    addGig('NEAR Developer Needed','This is a sample gig');
+    expect(gigs.length).toBe(
       1,
-      'should only contain one message'
+      'should only contain one gig'
     );
-    expect(messages[0]).toStrictEqual(
-      message,
-      'message should be "hello world"'
+    expect(gigs[0]).toStrictEqual(
+      gig,
+      'message should be gig'
     );
   });
 
-  it('adds a premium message', () => {
+  it('adds a premium gig', () => {
     VMContext.setAttached_deposit(u128.from('10000000000000000000000'));
-    addMessage('hello world');
-    const messageAR = getMessages();
-    expect(messageAR[0].premium).toStrictEqual(true,
+    addGig('NEAR Developer Needed','This is a sample gig');
+    const gigAR = getGigs();
+    expect(gigAR[0].premium).toStrictEqual(true,
       'should be premium'
     );
   });
 
-  it('retrieves messages', () => {
-    addMessage('hello world');
-    const messagesArr = getMessages();
-    expect(messagesArr.length).toBe(
+  it('retrieves gig', () => {
+    addGig('NEAR Developer Needed','This is a sample gig');
+    const gigArr = getGigs();
+    expect(gigArr.length).toBe(
       1,
       'should be one message'
     );
-    expect(messagesArr).toIncludeEqual(
-      message,
-      'messages should include:\n' + message.toJSON()
+    expect(gigArr).toIncludeEqual(
+      gig,
+      'messages should include:\n' + gig.toJSON()
     );
   });
 
   it('only show the last 10 messages', () => {
-    addMessage('hello world');
-    const newMessages: PostedMessage[] = [];
+    addGig('NEAR Developer Needed','This is a sample gig');
+    const newGigs: PostedGig[] = [];
     for(let i: i32 = 0; i < 10; i++) {
       const text = 'message #' + i.toString();
-      newMessages.push(createMessage(text));
-      addMessage(text);
+      const description = 'This is a sample gig' + i.toString();
+      newGigs.push(createGig(text, description));
+      addGig(text, description);
     }
-    const messages = getMessages();
+    const messages = getGigs();
     log(messages.slice(7, 10));
     expect(messages).toStrictEqual(
-      newMessages,
+      newGigs,
       'should be the last ten messages'
     );
     expect(messages).not.toIncludeEqual(
-      message,
+      gig,
       'shouldn\'t contain the first element'
     );
   });
@@ -79,7 +81,7 @@ describe('attached deposit tests', () => {
   it('attaches a deposit to a contract call', () => {
     log('Initial account balance: ' + Context.accountBalance.toString());
 
-    addMessage('hello world');
+    addGig('NEAR Developer Needed','This is a sample gig');
     VMContext.setAttached_deposit(u128.from('10'));
 
     log('Attached deposit: 10');

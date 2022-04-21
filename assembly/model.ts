@@ -1,15 +1,21 @@
 import { context, u128, PersistentVector } from "near-sdk-as";
 
 /** 
- * Exporting a new class PostedMessage so it can be used outside of this file.
+ * Exporting a new class PostedGig so it can be used outside of this file.
  */
 @nearBindgen
-export class PostedMessage {
+export class PostedGig {
   premium: boolean;
   sender: string;
-  constructor(public text: string) {
+  isValid: boolean;
+  description: string;
+  gigId: i32;
+  constructor(gigId: i32, public text: string, public gigDesc: string) {
     this.premium = context.attachedDeposit >= u128.from('10000000000000000000000');
     this.sender = context.sender;
+    this.isValid = true;
+    this.description = gigDesc;
+    this.gigId = gigId;
   }
 }
 /**
@@ -18,4 +24,4 @@ export class PostedMessage {
  * The parameter to the constructor needs to be unique across a single contract.
  * It will be used as a prefix to all keys required to store data in the storage.
  */
-export const messages = new PersistentVector<PostedMessage>("m");
+export const gigs = new PersistentVector<PostedGig>("g");
