@@ -53,7 +53,7 @@ Both contract and client-side code will auto-reload as you change source files.
 
 Every smart contract in NEAR has its [own associated account][near accounts]. When you run `yarn dev`, your smart contracts get deployed to the live NEAR TestNet with a throwaway account. When you're ready to make it permanent, here's how.
 
-## Step 0: Install near-cli
+## Step 0: Install near-cli and necessary packages
 
 You need near-cli installed globally. Here's how:
 
@@ -62,6 +62,10 @@ You need near-cli installed globally. Here's how:
 This will give you the `near` [CLI] tool. Ensure that it's installed with:
 
     near --version
+
+Install the necessary packages
+
+    yarn
 
 ## Step 1: Create an account for the contract
 
