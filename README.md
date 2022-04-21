@@ -77,14 +77,11 @@ Modify the line in `src/config.js` that sets the account name of the contract. S
 
     const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-account-here!'
 
-## Step 3: change remote URL if you cloned this repo
+## Step 3: play with the dApp in development
 
-Unless you forked this repository you will need to change the remote URL to a repo that you have commit access to. This will allow auto deployment to GitHub Pages from the command line.
+Use the command:
 
-1. go to GitHub and create a new repository for this project
-2. open your terminal and in the root of this project enter the following:
-
-   $ `git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git`
+    yarn dev
 
 ## Step 4: deploy!
 
