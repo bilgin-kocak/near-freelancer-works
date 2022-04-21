@@ -14,6 +14,12 @@ This project was built for the [patika.dev](https://www.patika.dev/) web3 and [N
 
 In this project, a user will publish freelance job advertisement to the blockchain. The user enters job name, description and price of the gig. Another user can accept the project. Of course this idea can be improved but in this bootcamp we will not complicate the gig posting idea.
 
+1. What will the project do for the user?
+   User can post freelancer jobs.
+
+2. How are you using the features of NEAR Protocol?
+   We store freelancer job advertisements on NEAR blockchain.
+
 # Quick Start
 
 To run this project locally:
