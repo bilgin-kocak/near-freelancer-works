@@ -22,7 +22,8 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const { fieldset, gigName, description, donation } = e.target.elements;
+    const { fieldset, gigName, description, price, donation } =
+      e.target.elements;
 
     fieldset.disabled = true;
 
@@ -42,10 +43,11 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
           setGigs(gig);
           gigName.value = "";
           description.value = "";
+          price.value = SUGGESTED_DONATION;
           donation.value = SUGGESTED_DONATION;
           fieldset.disabled = false;
           // çÖZ BUNU
-          gig.focus();
+          // gig.focus();
         });
       });
   };
