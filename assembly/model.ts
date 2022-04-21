@@ -10,12 +10,14 @@ export class PostedGig {
   isValid: boolean;
   description: string;
   gigId: i32;
-  constructor(gigId: i32, public text: string, public gigDesc: string) {
+  price: string;
+  constructor(gigId: i32, public text: string, public gigDesc: string, price: string) {
     this.premium = context.attachedDeposit >= u128.from('10000000000000000000000');
     this.sender = context.sender;
     this.isValid = true;
     this.description = gigDesc;
     this.gigId = gigId;
+    this.price = price;
   }
 }
 /**
@@ -24,4 +26,4 @@ export class PostedGig {
  * The parameter to the constructor needs to be unique across a single contract.
  * It will be used as a prefix to all keys required to store data in the storage.
  */
-export const gigs = new PersistentVector<PostedGig>("g");
+export const gigs = new PersistentVector<PostedGig>("a");

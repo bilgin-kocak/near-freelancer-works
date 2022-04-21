@@ -13,11 +13,17 @@ const BOATLOAD_OF_GAS = Big(3)
 
 const App = ({ contract, currentUser, nearConfig, wallet }) => {
   const [gigs, setGigs] = useState([]);
+  const [mygGigs, setMyGigs] = useState([]);
 
   useEffect(() => {
     // TODO: don't just fetch once; subscribe!
     contract.getGigs().then(setGigs);
+    contract
+      .getAccountGigs({ accountId: contract.account.accountId })
+      .then(setMyGigs);
   }, []);
+
+  console.log(contract);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +38,11 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
     // add uuid to each gid, so we know which one is already known
     contract
       .addGig(
-        { text: gigName.value, description: description.value },
+        {
+          text: gigName.value,
+          description: description.value,
+          price: price.value,
+        },
         BOATLOAD_OF_GAS,
         Big(donation.value || "0")
           .times(10 ** 24)
@@ -41,11 +51,15 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
       .then(() => {
         contract.getGigs().then((gig) => {
           setGigs(gig);
-          gigName.value = "";
-          description.value = "";
-          price.value = SUGGESTED_DONATION;
-          donation.value = SUGGESTED_DONATION;
-          fieldset.disabled = false;
+          contract
+            .getAccountGigs({ accountId: contract.account.accountId })
+            .then((gigs) => {
+              gigName.value = "";
+              description.value = "";
+              price.value = SUGGESTED_DONATION;
+              donation.value = SUGGESTED_DONATION;
+              fieldset.disabled = false;
+            });
           // çÖZ BUNU
           // gig.focus();
         });
@@ -69,6 +83,11 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
     window.location.replace(window.location.origin + window.location.pathname);
   };
 
+  const handleValidity = (e, gigId) => {
+    e.preventDefault();
+    contract.changeValidityGig({ gigId: gigId }, BOATLOAD_OF_GAS).then();
+  };
+
   return (
     <main>
       <header>
@@ -84,7 +103,14 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
       ) : (
         <SignIn />
       )}
-      {!!currentUser && !!gigs.length && <Gigs gigs={gigs} />}
+      {!!currentUser && (
+        <Gigs
+          gigs={gigs}
+          myGigs={mygGigs}
+          myAccountId={contract.account.accountId}
+          handleValidity={handleValidity}
+        />
+      )}
     </main>
   );
 };
