@@ -12,7 +12,7 @@ Sign in with [NEAR] and add a gig to the NEAR Freelancer Works! A starter app bu
 
 This project was built for the [patika.dev](https://www.patika.dev/) web3 and [NEAR](https://near.org/) bootcamp. The purpose of the project is to demonstrate understanding of smart contract development in AssemblyScript using NEAR protocol.
 
-In this project, a user will publish freelance job advertisement to the blockchain. The user enters job name, description and price of the gig. Another user can accept the project. Of course this idea can be improved but in this bootcamp we will not complicate the gig posting idea.
+In this project, a user will publish freelance job advertisement to the blockchain. The user enters job name, description and price of the gig. Another user can see the advertisement. Of course this idea can be improved but in this bootcamp we will not complicate the gig posting idea.
 
 1. What will the project do for the user?
 
