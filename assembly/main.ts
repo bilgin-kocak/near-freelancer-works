@@ -53,9 +53,12 @@ export function addGig(text: string, description: string, price: string): void {
         break;
       }
     }
-    
   }
-  return result;
+  const result_ = new Array<PostedGig>(result.length);
+  for (let i = 0; i < result.length; i++) {
+    result_[i] = result[result.length - i - 1];
+  }
+  return result_;
 }
 
 /**
