@@ -24,7 +24,9 @@ In this project, a user will publish freelance job advertisement to the blockcha
    
 ## Project Explanation
 
-[![NEAR Freelancer Works](https://user-images.githubusercontent.com/62159014/151663684-1cd01b3e-c93b-4cfb-9ffa-531d488b78ed.gif)](https://www.loom.com/share/c05f9193c7114592b3f08e6699ce4cc1)
+Watch the below loom link to see project demo.
+
+[![NEAR Freelancer Works](https://user-images.githubusercontent.com/30844607/165120070-f5392a87-c488-4ff3-9ac0-2869b099e791.png)](https://www.loom.com/share/c05f9193c7114592b3f08e6699ce4cc1)
 
 
 # Quick Start
