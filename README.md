@@ -21,6 +21,11 @@ In this project, a user will publish freelance job advertisement to the blockcha
 2. How are you using the features of NEAR Protocol?
 
    We store freelancer job advertisements on NEAR blockchain.
+   
+## Project Explanation
+
+[![NEAR Freelancer Works](https://user-images.githubusercontent.com/62159014/151663684-1cd01b3e-c93b-4cfb-9ffa-531d488b78ed.gif)](https://www.loom.com/share/c05f9193c7114592b3f08e6699ce4cc1)
+
 
 # Quick Start
 
