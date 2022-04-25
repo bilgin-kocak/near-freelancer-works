@@ -112,6 +112,7 @@ You can use the view methods to see previous freelance job advertisements.
     near call $CONTRACT getGigs --accountId bilgin.testnet
     
 Example output of this command.
+
 ![image](https://user-images.githubusercontent.com/30844607/165124992-793889a9-afa0-419a-9309-24f3320fa822.png)
 
     
