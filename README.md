@@ -21,6 +21,13 @@ In this project, a user will publish freelance job advertisement to the blockcha
 2. How are you using the features of NEAR Protocol?
 
    We store freelancer job advertisements on NEAR blockchain.
+   
+## Project Explanation
+
+Watch the below loom link to see project demo.
+
+[![NEAR Freelancer Works](https://user-images.githubusercontent.com/30844607/165120070-f5392a87-c488-4ff3-9ac0-2869b099e791.png)](https://www.loom.com/share/c05f9193c7114592b3f08e6699ce4cc1)
+
 
 # Quick Start
 
@@ -86,6 +93,45 @@ Modify the line in `src/config.js` that sets the account name of the contract. S
 Use the command:
 
     yarn dev
+    
+Connect the localhost using your browser:
+
+    http://localhost:1234
+
+![image](https://user-images.githubusercontent.com/30844607/165126898-7918f5ff-6a9f-47b2-b523-d183a7c0e5ce.png)
+
+
+You can use the app using frontend of the it. Or you can use the following commands directly.
+
+To make things super easy, we will create a variable on the terminal and assign our contract id to it. You should use your own contract id hereafter.
+
+    export CONTRACT=dev-1650531737505-19542435019744
+
+You can use the view methods to see previous freelance job advertisements.
+
+    near call $CONTRACT getGigs --accountId bilgin.testnet
+    
+Example output of this command.
+
+![image](https://user-images.githubusercontent.com/30844607/165124992-793889a9-afa0-419a-9309-24f3320fa822.png)
+
+    
+You can add new freelance work advertisement by using:
+
+    near call $CONTRACT addGig '{"text":"<name of the freelance work>,"description":"<description of work>","price":"<amount in NEAR>"}' --accountId <your-account-id.testnet>  
+    
+Example of this command
+
+    near call $CONTRACT addGig '{"text":"React Developer","description":"2 Years Experienced","price":"1,00"}' --accountId bilgin.testnet  
+
+Change the validity of the freelance job advertisement.
+
+    near call $CONTRACT changeValidityGig '{"gigId":"<gigId>"}' --accountId <your-account-id.testnet> 
+    
+You can obtain the freelance jobs of given account.
+
+    near call $CONTRACT getAccountGigs '{"accountId":"<account-id.testnet>"}' --accountId <your-account-id.testnet>  
+
 
 ## Step 4: deploy!
 
