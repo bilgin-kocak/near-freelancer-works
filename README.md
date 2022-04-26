@@ -90,6 +90,8 @@ Modify the line in `src/config.js` that sets the account name of the contract. S
 
 ## Step 3: play with the dApp in development
 
+In this part you can use the example scripts in the scripts folder or follow the commands below.
+
 Use the command:
 
     yarn dev
